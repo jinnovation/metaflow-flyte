@@ -43,6 +43,9 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
    TODO: Do we want to separate [[https://docs.flyte.org/en/latest/concepts/registration.html][registration]] from execution? What does "submit"
    here mean?
 
+   At some point in future, could even use [[https://docs.metaflow.org/going-to-production-with-metaflow/coordinating-larger-metaflow-projects#the-project-decorator][built-in @project]] decorator for
+   this?? Metaflow branches seem analogous to Flyte domains. 
+
    The fact that workflows can be authored as [[https://docs.flyte.org/en/latest/concepts/registration.html#typical-flow-without-flytekit][YAML, JSON, or protobuf]] -- that
    is, without using the =flytekit= Python SDK -- might be useful.
 

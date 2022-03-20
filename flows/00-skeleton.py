@@ -1,11 +1,13 @@
-from metaflow import FlowSpec, step
+from metaflow import FlowSpec, flyte, step
 
 
+@flyte
 class SkeletonFlow(FlowSpec):
     """A flow that contains literally only a `start` and an `end`. It has no logic,
     no external dependencies, no resource requirements -- nothing.
 
     """
+
     @step
     def start(self):
         """Prints a message stating that the flow is starting. That's it."""
