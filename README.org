@@ -3,6 +3,26 @@
 
 Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https://flyte.org/][Flyte]].
 
+* Notes
+
+** Extending Metaflow
+
+   Metaflow has specific "extension points" built in. Any third-party package,
+   such as ours, that conforms to their expected conventions and protocols will
+   automatically get "injected" into `metaflow` top-level imports. This lets a
+   package like ours define a custom decorator =FooDecorator= with name
+   =@foo= and have it importable via:
+
+   #+begin_src python
+     from metaflow import foo
+   #+end_src
+
+   The same goes for CLI sub-commands, allowing us to define custom CLI trees
+   such as =my_subcmd= and have them accessible from the typical =python
+   my/metaflow/flow.py= command tree **with no user intervention**.
+
+   Some more details here: [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]].
+
 * TODO [1/4] Tasks
 
 ** DONE Create a local Flyte cluster
@@ -44,7 +64,7 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
    here mean?
 
    At some point in future, could even use [[https://docs.metaflow.org/going-to-production-with-metaflow/coordinating-larger-metaflow-projects#the-project-decorator][built-in @project]] decorator for
-   this?? Metaflow branches seem analogous to Flyte domains. 
+   this?? Metaflow branches seem analogous to Flyte domains.
 
    The fact that workflows can be authored as [[https://docs.flyte.org/en/latest/concepts/registration.html#typical-flow-without-flytekit][YAML, JSON, or protobuf]] -- that
    is, without using the =flytekit= Python SDK -- might be useful.
