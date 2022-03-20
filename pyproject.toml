@@ -12,6 +12,7 @@ python-lsp-server = "^1.4.0"
 python-lsp-black = "^1.1.0"
 pylsp-mypy = "^0.5.7"
 pyls-isort = "^0.2.2"
+click = "^8.0.4"
 
 [tool.poetry.dev-dependencies]
 
