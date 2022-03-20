@@ -3,7 +3,7 @@
 
 Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https://flyte.org/][Flyte]].
 
-* TODO [1/3] Tasks
+* TODO [1/4] Tasks
 
 ** DONE Create a local Flyte cluster
 
@@ -17,6 +17,9 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
      flytectl sandbox start --source .
    #+end_src
    
+** TODO Submit empty flow w/ no external dependencies to Flyte cluster
+    
+** TODO Submit whole flow w/ single step, no dependencies to Flyte cluster
+
 ** TODO Submit single step to Flyte cluster
 
-** TODO Submit whole flow to Flyte cluster
