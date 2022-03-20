@@ -40,11 +40,15 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
              print("HelloFlow is all done.")
    #+end_src
 
-*** TODO Submit empty flow w/ no external dependencies
+   TODO: Do we want to separate [[https://docs.flyte.org/en/latest/concepts/registration.html][registration]] from execution? What does "submit"
+   here mean?
+
+   The fact that workflows can be authored as [[https://docs.flyte.org/en/latest/concepts/registration.html#typical-flow-without-flytekit][YAML, JSON, or protobuf]] -- that
+   is, without using the =flytekit= Python SDK -- might be useful.
+
+*** TODO Submit flow with only start/end w/ no external dependencies
 
 *** TODO Submit flow with parameters
-
-*** TODO Submit flow with single step
 
 *** TODO Submit and execute flow
 
@@ -61,3 +65,6 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
 
 *** TODO [[https://docs.metaflow.org/metaflow/failures#timing-out-with-the-timeout-decorator][@timeout]]
 
+* Out of Scope
+
+  - Managing [[https://docs.flyte.org/en/latest/concepts/launchplans.html#divedeep-launchplans][launch plans]] associated w/ Metaflow flows
