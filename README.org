@@ -3,9 +3,19 @@
 
 Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https://flyte.org/][Flyte]].
 
-* TODO [0/3] Tasks
+* TODO [1/3] Tasks
 
-** TODO Create a local Flyte cluster
+** DONE Create a local Flyte cluster
+
+   First, install [[https://docs.flyte.org/projects/flytectl/en/latest/gen/flytectl.html#flytectl][=flytectl=]]:
+
+   #+begin_src bash
+     brew install flyteorg/homebrew-tap/flytectl
+   #+end_src
+
+   #+begin_src bash
+     flytectl sandbox start --source .
+   #+end_src
    
 ** TODO Submit single step to Flyte cluster
 
