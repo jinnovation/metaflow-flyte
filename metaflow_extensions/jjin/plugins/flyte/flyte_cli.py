@@ -40,9 +40,9 @@ def compile(obj):
 
     launch_plan: LaunchPlan = LaunchPlan.get_or_create(wf)
 
-    # https://docs.flyte.org/projects/flytekit/en/latest/generated/flytekit.LaunchPlan.html
+    # https://docs.flyte.org/projects/flytekit/en/latest/generated/flytekit.remote.remote.FlyteRemote.html
     # obj.flyte_cluster.execute(
     #     launch_plan,
     #     project=current.project_name,
-    #     domain=current.domain_name,
+    #     domain=current.branch_name,
     # )

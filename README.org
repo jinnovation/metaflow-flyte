@@ -39,36 +39,24 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
 
 ** TODO [0/5] Submit flow to Flyte cluster
 
-   Decorator might look something like:
+   To try:
 
-   #+begin_src python
-     @flyte(project='my project', domain='prototyping')
-     class HelloFlow(FlowSpec):
-         @step
-         def start(self):
-             print("HelloFlow is starting.")
-
-             self.next(self.end)
-
-         @step
-         def end(self):
-             """
-             This is the 'end' step. All flows must have an 'end' step, which is the
-             last step in the flow.
-
-             """
-             print("HelloFlow is all done.")
+   #+begin_src bash
+     python flows/00-skeleton.py flyte compile
    #+end_src
 
-   TODO: Do we want to separate [[https://docs.flyte.org/en/latest/concepts/registration.html][registration]] from execution? What does "submit"
-   here mean?
+   This doesn't do much currently; it:
 
-   At some point in future, could even use [[https://docs.metaflow.org/going-to-production-with-metaflow/coordinating-larger-metaflow-projects#the-project-decorator][built-in @project]] decorator for
-   this?? Metaflow branches seem analogous to Flyte domains.
+   - Converts the Metaflow flow to an [[https://docs.flyte.org/projects/cookbook/en/latest/auto/core/flyte_basics/imperative_wf_style.html#sphx-glr-auto-core-flyte-basics-imperative-wf-style-py][imperatively defined]] Flyte workflow
+     (though current "convert" just means create an empty Flyte workflow...);
+   - Gets the [[https://docs.flyte.org/en/latest/concepts/launchplans.html#the-association-between-workflows-and-launchplans][default launch plan]] for that Flyte workflow.
 
-   The fact that workflows can be authored as [[https://docs.flyte.org/en/latest/concepts/registration.html#typical-flow-without-flytekit][YAML, JSON, or protobuf]] -- that
-   is, without using the =flytekit= Python SDK -- might be useful.
 
+   We plan to have it do the following:
+
+   - [[https://docs.flyte.org/projects/flytekit/en/latest/generated/flytekit.remote.remote.FlyteRemote.html][Execute on a remote Flyte cluster]], mapping the project and branch from the
+     [[https://docs.metaflow.org/going-to-production-with-metaflow/coordinating-larger-metaflow-projects#the-project-decorator][@project]] decorator to the Flyte [[https://docs.flyte.org/en/latest/concepts/projects.html][project]] and [[https://docs.flyte.org/en/latest/concepts/domains.html][domain]] respectively.
+     
 *** TODO Submit flow with only start/end w/ no external dependencies
 
 *** TODO Submit flow with parameters
