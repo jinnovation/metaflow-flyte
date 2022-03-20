@@ -4,7 +4,8 @@ from flytekit import Workflow
 from metaflow import current
 from metaflow.graph import FlowGraph
 
-# TODO: func to turn node into flyte.PythonTask
+# TODO: Package the code and submit to Flyte
+# TODO: func to turn metaflow.DAGNode into flyte.PythonTask
 
 
 class WorkflowConstructor:
@@ -31,4 +32,6 @@ class WorkflowConstructor:
         self.echo("Ignoring all nodes in the workflow; stuff's WIP okay?")
         self.echo(f"Constructed shell Flyte workflow: {wf}")
 
+        # TODO: package the workflow using the pyflyte cli bundled with Flytekit and upload it to the Flyte
+        # backend.
         return wf
