@@ -1,7 +1,11 @@
-from metaflow import FlowSpec, flyte, step
+from metaflow import FlowSpec, project, step
+
+# from metaflow import flyte
 
 
-@flyte
+# FIXME: With flyte plugin CLI, specific decorator might not even be necessary.
+# @flyte
+@project(name="jjin_metaflow_flyte_project")
 class SkeletonFlow(FlowSpec):
     """A flow that contains literally only a `start` and an `end`. It has no logic,
     no external dependencies, no resource requirements -- nothing.

@@ -1,4 +1,5 @@
 import click
+from metaflow import current
 
 
 # Provides new CLI flow subcmds
@@ -13,5 +14,7 @@ def flyte():
 
 
 @flyte.command(help="Register flow as a Flyte workflow.")
-def register():
-    click.echo("flyte register")
+@click.pass_context
+def register(ctx):
+    ctx.obj.echo(f"Project name: {current.project_name}")
+    ctx.obj.echo(f"Branch name: {current.branch_name}")
