@@ -30,6 +30,9 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
    need for wrapper CLIs, companion SDKs, or sub-classing of specialized types.
    #+end_quote
 
+   The [[https://github.com/Netflix/metaflow-extensions-template#user-stories][user stories]] provided at [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]] are
+   particularly worth reading.
+
 * TODO [1/4] Tasks
 
 ** DONE Create a local Flyte cluster
