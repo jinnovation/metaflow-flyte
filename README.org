@@ -16,10 +16,48 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
    #+begin_src bash
      flytectl sandbox start --source .
    #+end_src
-   
-** TODO Submit empty flow w/ no external dependencies to Flyte cluster
-    
-** TODO Submit whole flow w/ single step, no dependencies to Flyte cluster
+
+** TODO [0/5] Submit flow to Flyte cluster
+
+   Decorator might look something like:
+
+   #+begin_src python
+     @flyte(project='my project', domain='prototyping')
+     class HelloFlow(FlowSpec):
+         @step
+         def start(self):
+             print("HelloFlow is starting.")
+
+             self.next(self.end)
+
+         @step
+         def end(self):
+             """
+             This is the 'end' step. All flows must have an 'end' step, which is the
+             last step in the flow.
+
+             """
+             print("HelloFlow is all done.")
+   #+end_src
+
+*** TODO Submit empty flow w/ no external dependencies
+
+*** TODO Submit flow with parameters
+
+*** TODO Submit flow with single step
+
+*** TODO Submit and execute flow
+
+*** TODO Submit and set a schedule on a flow
+
+    Could we use the Metaflow default [[https://docs.metaflow.org/going-to-production-with-metaflow/scheduling-metaflow-flows#scheduling-a-flow][@schedule]] decorator here? Or is that
+    coupled to AWS Step?
 
 ** TODO Submit single step to Flyte cluster
+
+** TODO [0/2] Reuse Metaflow default decorators for Flyte analogues
+
+*** TODO [[https://docs.metaflow.org/metaflow/failures#retrying-tasks-with-the-retry-decorator][@retry]]
+
+*** TODO [[https://docs.metaflow.org/metaflow/failures#timing-out-with-the-timeout-decorator][@timeout]]
 
