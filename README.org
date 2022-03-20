@@ -23,6 +23,13 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
 
    Some more details here: [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]].
 
+   In general, the following observation holds particular value:
+
+   #+begin_quote
+   Metaflow allows for seamless "injection" of extensions without an associated
+   need for wrapper CLIs, companion SDKs, or sub-classing of specialized types.
+   #+end_quote
+
 * TODO [1/4] Tasks
 
 ** DONE Create a local Flyte cluster
