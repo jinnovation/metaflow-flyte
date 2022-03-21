@@ -9,9 +9,12 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
 
    Metaflow has specific "extension points" built in. Any third-party package,
    such as ours, that conforms to their expected conventions and protocols will
-   automatically get "injected" into `metaflow` top-level imports. This lets a
-   package like ours define a custom decorator =FooDecorator= with name
-   =@foo= and have it importable via:
+   automatically get "injected" into `metaflow` top-level imports.
+
+   Some more details here: [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]].
+
+   This lets a package like ours define a custom decorator =FooDecorator= with
+   name =@foo= and have it importable via:
 
    #+begin_src python
      from metaflow import foo
@@ -21,13 +24,13 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
    such as =my_subcmd= and have them accessible from the typical =python
    my/metaflow/flow.py= command tree **with no user intervention**.
 
-   Some more details here: [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]].
-
    In general, the following observation holds particular value:
 
    #+begin_quote
    Metaflow allows for seamless "injection" of extensions without an associated
-   need for wrapper CLIs, companion SDKs, or sub-classing of specialized types.
+   need for wrapper CLIs, companion SDKs, or sub-classing of specialized
+   types. These extensions range from: custom types (exceptions, decorators,
+   etc.) to entire conventions, e.g. [[https://github.com/Netflix/metaflow-extensions-template#modify-default-values][company/platform-specific default values]].
    #+end_quote
 
    The [[https://github.com/Netflix/metaflow-extensions-template#user-stories][user stories]] provided at [[https://github.com/Netflix/metaflow-extensions-template][Netflix/metaflow-extensions-template]] are
