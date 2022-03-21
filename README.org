@@ -3,6 +3,12 @@
 
 Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https://flyte.org/][Flyte]].
 
+* Getting Started
+
+  - Clone this repo
+  - Create a new virtualenv (I recommend using [[https://github.com/pyenv/pyenv][pyenv]] and [[https://github.com/pyenv/pyenv-virtualenv][pyenv-virtualenv]]);
+  - =poetry install=
+
 * Notes
 
 ** Extending Metaflow
