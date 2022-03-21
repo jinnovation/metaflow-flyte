@@ -1,6 +1,7 @@
-from metaflow import FlowSpec, project, step
+from metaflow import FlowSpec, foo, project, step
 
 
+@foo
 @project(name="flytesnacks")
 class SkeletonFlow(FlowSpec):
     """A flow that contains literally only a `start` and an `end`. It has no logic,
