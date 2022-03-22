@@ -1,2 +1,5 @@
+.metaflow/
+.python-version
+*.tgz
 metaflow-tutorials/
 **/__pycache__/
