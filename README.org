@@ -56,7 +56,7 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
      flytectl sandbox start --source .
    #+end_src
 
-** TODO [0/5] Submit flow to Flyte cluster
+** TODO [0/0] Submit flow to Flyte cluster
 
    To register the workflow (WIP):
 
@@ -104,3 +104,23 @@ Experiments in dispatching [[https://metaflow.org/][Metaflow]] flows to [[https:
 * Out of Scope
 
   - Managing [[https://docs.flyte.org/en/latest/concepts/launchplans.html#divedeep-launchplans][launch plans]] associated w/ Metaflow flows
+
+* Complications
+
+** Metaflow branches vs Flyte domains
+
+   Domains are, from what I can tell, intended to be defined as a finite set at
+   the control-plane layer. In other words, a user can't arbitrarily create
+   domains such as =test.foo=.
+
+   This design decision stands somewhat at odds with Metaflow's approach to
+   [[https://docs.metaflow.org/going-to-production-with-metaflow/coordinating-larger-metaflow-projects][namespacing]], centered around the =--branch= (not to mention user-specific
+   defaults such as =user.jjin=).
+
+** Creating Flyte workflow and registering in same file
+
+   Related: [[https://github.com/flyteorg/flyte/issues/1813][flyteorg/flyte#1813]].
+
+   This issue *might* impede: taking the Metaflow graph; converting it to a
+   Flyte workflow =flyte_wf= via the [[https://docs.flyte.org/projects/cookbook/en/latest/auto/core/flyte_basics/imperative_wf_style.html][imperative API]]; and registering =flyte_wf=
+   in the same function/command.

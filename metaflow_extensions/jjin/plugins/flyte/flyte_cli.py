@@ -34,8 +34,9 @@ def flyte(obj):
         "localhost:30081",
         insecure=True,
         default_project=project_name,
-        default_domain=branch_name,
-        image_config=get_image_config(img_name="myapp:v1"),
+        default_domain="staging",
+        # image_config=get_image_config(img_name="myapp:v1"),
+        image_config=get_image_config(img_name="mfext:v1"),
     )
 
     # TODO: Create the project if not present??
@@ -43,7 +44,9 @@ def flyte(obj):
     # obj.flyte_cluster.client.register_project
 
     obj.workflow_constructor = WorkflowConstructor.from_metaflow_cli_obj(obj)
-    obj.workflow = obj.workflow_constructor.build(obj.graph)
+    wf, tasks = obj.workflow_constructor.build(obj.graph)
+    obj.workflow = wf
+    obj.tasks = tasks
 
 
 @flyte.command(help="Register flow as a Flyte workflow.")
@@ -51,25 +54,10 @@ def flyte(obj):
 def register(obj):
     obj.echo(f"Project name: {current.project_name}")
     obj.echo(f"Branch name: {current.branch_name}")
+    for task in obj.tasks:
+        obj.flyte_cluster.register(task)
     obj.flyte_cluster.register(obj.workflow)
+    obj.echo("Registered Flyte workflow")
 
-
-@flyte.command(help="Compile to Flyte workflow.")
-@click.pass_obj
-def compile(obj):
-    obj.echo(f"Project name: {current.project_name}")
-    obj.echo(f"Branch name: {current.branch_name}")
-    wf = obj.workflow
-    obj.echo(f"Ready? {wf.ready()}")
-
-    if not wf.ready():
-        raise FlyteNotReadyException
-
-    launch_plan: LaunchPlan = LaunchPlan.get_or_create(wf)
-
-    # https://docs.flyte.org/projects/flytekit/en/latest/generated/flytekit.remote.remote.FlyteRemote.html
-    # obj.flyte_cluster.execute(
-    #     launch_plan,
-    #     project=current.project_name,
-    #     domain=current.branch_name,
-    # )
+    launch_plan: LaunchPlan = LaunchPlan.get_or_create(obj.workflow)
+    obj.flyte_cluster.register(launch_plan)
